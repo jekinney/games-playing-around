@@ -20,3 +20,8 @@ Route::get('/user', function (Request $request) {
 Route::post('black-jack/start', 'BlackJackController@start');
 Route::post('black-jack/hit', 'BlackJackController@hit');
 Route::post('black-jack/stay', 'BlackJackController@stay');
+
+Route::post('texas-holdem/start', 'TexasHoldemController@start');
+Route::post('texas-holdem/restart', 'TexasHoldemController@restart');
+Route::post('texas-holdem/round', 'TexasHoldemController@nextRound');
+Route::post('texas-holdem/fold', 'TexasHoldemController@fold');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Games\Models\BlackJackGame;
+use App\Games\Models\BlackJack;
 
 class BlackJackController extends Controller
 {
@@ -17,18 +17,18 @@ class BlackJackController extends Controller
         return view('games.black-jack');
     }
 
-    public function start(Request $request, BlackJackGame $blackJack)
+    public function start(Request $request, BlackJack $blackJack)
     {
-        return response()->json($blackJack->startGame($request->bet, $request->chips));
+        return response()->json($blackJack->start($request->bet));
     }
 
-    public function hit(Request $request, BlackJackGame $blackJack)
+    public function hit(Request $request, BlackJack $blackJack)
     {
         return response()->json($blackJack->hit($request->key));
     }
 
-    public function stay(Request $request, BlackJackGame $blackJack)
+    public function stay(Request $request, BlackJack $blackJack)
     {
-        dd($request->all());
+       return response()->json($blackJack->stay($request->key));
     }
 }

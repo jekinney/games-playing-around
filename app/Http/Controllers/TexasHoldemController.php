@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Games\Models\TexasHoldem;
 use Illuminate\Http\Request;
 
 class TexasHoldemController extends Controller
@@ -16,69 +17,19 @@ class TexasHoldemController extends Controller
         return view('games.texas-holdem');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function start(Request $request, TexasHoldem $texas)
     {
-        //
+        return response()->json($texas->deal($request->bet));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function restart(Request $request, TexasHoldem $texas)
     {
-        //
+        return response()->json($texas->deal($request->bet, $request->key));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function nextRound(Request $request, TexasHoldem $texas)
     {
-        //
+        return response()->json($texas->round($request->bet, $request->key));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

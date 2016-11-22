@@ -18,4 +18,8 @@ Route::get('mp-poker', 'PokerController@index');
 Route::get('texas-holdem', 'TexasHoldemController@index');
 Route::get('video-poker', 'VideoPokerController@index');
 
+Route::get('reports/all', 'GameReportsController@index');
+Route::get('reports/game/{gamename}', 'GameReportsController@show');
+Route::get('reports/game/details/{redisKey}', 'GameReportsController@details');
+Route::get('testing', 'TestingController@index');
 Auth::routes();
